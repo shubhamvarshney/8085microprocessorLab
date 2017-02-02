@@ -1,3 +1,6 @@
+;This code can calculate x(1+x^2) accurately till x=40.
+;From x=41 to x=255, the code drops third byte and calculates only two bytes.
+
 MVI B,02H
 LXI H,0000H
 LXI D,0000H

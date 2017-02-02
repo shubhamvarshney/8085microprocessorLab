@@ -9,9 +9,7 @@ DCR C
 LXI H,0000H
 DAD D
 addLoop: DAD D
-JNC countDecrement
-INR B
-countDecrement: DCR C
+DCR C
 JNZ addLoop
 SHLD 300AH
 XCHG

@@ -1,0 +1,38 @@
+MVI B,06H
+LXI H,3000H
+loop: MOV C,B
+XCHG
+LXI H,0000H
+DAD D
+MOV A,M
+nextNumber: INX H
+DCR C
+JZ compSwap
+CMP M
+JNC nextNumber
+MOV A,M
+JMP nextNumber
+compSwap: STA 2002H
+MOV A,B
+STA 2004H
+LDA 2002H
+MOV B,A
+compare: DCX H
+MOV A,M
+CMP B
+JC compare
+LDA 2004H
+MOV B,A
+LDA 2002H
+swap: STA 2000H
+XCHG
+MOV A,M
+XCHG
+MOV M,A
+LDA 2000H
+XCHG
+MOV M,A
+INX H
+DCR B
+JNZ loop
+HLT
